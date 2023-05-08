@@ -22,7 +22,6 @@ def main():
     loader = DatasetLoader(dataset_path)
     converter = Converter(loader)
     converter.convert_dataset_to_images()
-    # Experimen(params_provider).run()
 
 
 if __name__ == "__main__":

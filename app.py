@@ -24,7 +24,7 @@ def main():
     converter = Converter(loader)
     converter.convert_dataset_to_images()
     visualizer = Visualization(loader)
-    visualizer.to_file("./results", "./results.json")
+    visualizer.to_file("./results/", "./results.json")
 
 
 

@@ -6,6 +6,7 @@ import cv2
 
 from src.converter.converter import Converter
 from src.loader.loader import DatasetLoader
+from src.visualization.visualization import Visualization
 from src.video_capture.capture import VideoCapture
 
 
@@ -22,6 +23,9 @@ def main():
     loader = DatasetLoader(dataset_path)
     converter = Converter(loader)
     converter.convert_dataset_to_images()
+    visualizer = Visualization(loader)
+    visualizer.to_file("./results/", "./results.json")
+
 
 
 if __name__ == "__main__":

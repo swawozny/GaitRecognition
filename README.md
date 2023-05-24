@@ -8,9 +8,9 @@ python app.py <gait3d_dataset_dir>
 
 ## To run gui witthout Gait u need to use this command:
 
-...
+```
 python3 gui_from_file.py 
-...
+```
 
 ## Output
 The script generates a json file that looks like this:

@@ -25,18 +25,19 @@ result_points = []
 
 reader = c3d.Reader(open('../Sequences/p1s1/MoCap/p1s1.c3d', 'rb'))
 for i, points, analog in reader.read_frames():
-    print('frame {}: point {}, analog {}'.format(i, points.shape, analog.shape))
-    print(points[0])
+    #print('frame {}: point {}, analog {}'.format(i, points.shape, analog.shape))
+    #print(points[0])
     points_xyz = []
     for point in points:
         [x,y,z, r, c] = point
         points_xyz.append((float(x),float(y),float(z)))
 
-    imagePoints = cv2.projectPoints(points_xyz[0], np.array([rx,ry,rz]), np.array([tx,ty,tz]), camera_matrix, np.array([0,0,0,0]))
+    imagePoints = cv2.projectPoints(points_xyz[0], np.array([rx,ry,rz]), np.array([tx,ty,tz]), camera_matrix, np.array([0.0,0.0,0.0,0.0]))
+    print(imagePoints[0])
     result_points.append(imagePoints)
 
 
-print(result_points)
+#print(result_points)
 
 
 data = []

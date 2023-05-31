@@ -21,20 +21,27 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('dataset_dir', type=str, nargs='?',
                         help='A required path to configuration file')
+    parser.add_argument('action', type=str, nargs='?',
+                        help='A type of operation that the program will execute')
 
     args = parser.parse_args()
-    dataset_path = args.dataset_dir or 'src/datasets/gait3d'
+    dataset_path = args.dataset_dir or '../PreparedSeq'
+    action = args.action or 'all'
 
     loader = DatasetLoader(dataset_path)
-    converter = Converter(loader)
-    converter.convert_dataset_to_images()
-    visualizer = Visualization(loader)
-    visualizer.to_file("./results/", "./results.json")
+
+    if(action=="find" or action=="all"):
+        converter = Converter(loader)
+        converter.convert_dataset_to_images()
+    if(action=="visualize" or action=="all"):
+        visualizer = Visualization(loader)
+        visualizer.to_file("./results/", "./results.json")
     print(result_path)
-    app = QApplication([])
-    player = VideoWindow(result_path)
-    player.showMaximized()
-    sys.exit(app.exec_())
+    if(action=="show" or action=="all"):
+        app = QApplication([])
+        player = VideoWindow(result_path)
+        player.showMaximized()
+        sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
